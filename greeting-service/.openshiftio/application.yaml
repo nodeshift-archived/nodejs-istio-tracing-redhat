@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Template
 metadata:
-  name: nodejs-istio-tracing-greeting-service
+  name: nodejs-istio-tracing-redhat-greeting-service
   annotations:
     description: This template creates a Build Configuration using an S2I builder.
     tags: instant-app
@@ -30,27 +30,27 @@ objects:
 - apiVersion: v1
   kind: ImageStream
   metadata:
-    name: nodejs-istio-tracing-greeting
+    name: nodejs-istio-tracing-redhat-greeting
   spec: {}
 - apiVersion: v1
   kind: ImageStream
   metadata:
-    name: nodejs-istio-tracing-greeting-runtime
+    name: nodejs-istio-tracing-redhat-greeting-runtime
   spec:
     tags:
     - name: latest
       from:
         kind: DockerImage
-        name: 'bucharestgold/centos7-s2i-nodejs:8.x'
+        name: 'registry.access.redhat.com/rhoar-nodejs/nodejs-8:latest'
 - apiVersion: v1
   kind: BuildConfig
   metadata:
-    name: nodejs-istio-tracing-greeting
+    name: nodejs-istio-tracing-redhat-greeting
   spec:
     output:
       to:
         kind: ImageStreamTag
-        name: nodejs-istio-tracing-greeting:latest
+        name: nodejs-istio-tracing-redhat-greeting:latest
     postCommit: {}
     resources: {}
     source:
@@ -64,7 +64,7 @@ objects:
       sourceStrategy:
         from:
           kind: ImageStreamTag
-          name: nodejs-istio-tracing-greeting-runtime:latest
+          name: nodejs-istio-tracing-redhat-greeting-runtime:latest
         incremental: true
     triggers:
     - github:
@@ -85,24 +85,24 @@ objects:
         targetPort: 8080
     type: ClusterIP
     selector:
-      project: nodejs-istio-tracing-greeting
+      project: nodejs-istio-tracing-redhat-greeting
       provider: nodeshift
   metadata:
-    name: nodejs-istio-tracing-greeting
+    name: nodejs-istio-tracing-redhat-greeting
     labels:
       provider: nodeshift
       expose: 'true'
-      project: nodejs-istio-tracing-greeting
-      version: 1.1.0
+      project: nodejs-istio-tracing-redhat-greeting
+      version: 1.0.0
 - apiVersion: v1
   kind: DeploymentConfig
   metadata:
-    name: nodejs-istio-tracing-greeting
+    name: nodejs-istio-tracing-redhat-greeting
     labels:
-      app: nodejs-istio-tracing-greeting
+      app: nodejs-istio-tracing-redhat-greeting
       provider: nodeshift
-      project: nodejs-istio-tracing-greeting
-      version: 1.1.0
+      project: nodejs-istio-tracing-redhat-greeting
+      version: 1.0.0
   spec:
     template:
       spec:
@@ -119,8 +119,8 @@ objects:
                 - curl
                 - http://localhost:8080/api/health/liveness
               initialDelaySeconds: 180
-            image: nodejs-istio-tracing-greeting
-            name: nodejs-istio-tracing-greeting
+            image: nodejs-istio-tracing-redhat-greeting
+            name: nodejs-istio-tracing-redhat-greeting
             securityContext:
               privileged: false
             ports:
@@ -131,14 +131,14 @@ objects:
         annotations:
           sidecar.istio.io/inject: "true"
         labels:
-          app: nodejs-istio-tracing-greeting
-          project: nodejs-istio-tracing-greeting
+          app: nodejs-istio-tracing-redhat-greeting
+          project: nodejs-istio-tracing-redhat-greeting
           provider: nodeshift
           version: 1.1.0
     replicas: 1
     selector:
-      app: nodejs-istio-tracing-greeting
-      project: nodejs-istio-tracing-greeting
+      app: nodejs-istio-tracing-redhat-greeting
+      project: nodejs-istio-tracing-redhat-greeting
       provider: nodeshift
     triggers:
       - type: ConfigChange
@@ -146,7 +146,7 @@ objects:
         imageChangeParams:
           automatic: true
           containerNames:
-            - nodejs-istio-tracing-greeting
+            - nodejs-istio-tracing-redhat-greeting
           from:
             kind: ImageStreamTag
-            name: 'nodejs-istio-tracing-greeting:latest'
+            name: 'nodejs-istio-tracing-redhat-greeting:latest'

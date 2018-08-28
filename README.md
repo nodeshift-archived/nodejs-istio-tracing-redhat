@@ -32,8 +32,8 @@ Run the following commands to apply and execute the OpenShift templates that wil
 ```bash
 find . | grep openshiftio | grep application | xargs -n 1 oc apply -f
 
-oc new-app --template=nodejs-istio-tracing-greeting-service -p SOURCE_REPOSITORY_URL=https://github.com/bucharest-gold/nodejs-istio-tracing -p SOURCE_REPOSITORY_REF=master -p SOURCE_REPOSITORY_DIR=greeting-service
-oc new-app --template=nodejs-istio-tracing-cute-name-service -p SOURCE_REPOSITORY_URL=https://github.com/bucharest-gold/nodejs-istio-tracing -p SOURCE_REPOSITORY_REF=master -p SOURCE_REPOSITORY_DIR=cute-name-service
+oc new-app --template=nodejs-istio-tracing-redhat-greeting-service -p SOURCE_REPOSITORY_URL=https://github.com/bucharest-gold/nodejs-istio-tracing-redhat -p SOURCE_REPOSITORY_REF=8.x -p SOURCE_REPOSITORY_DIR=greeting-service
+oc new-app --template=nodejs-istio-tracing-redhat-cute-name-service -p SOURCE_REPOSITORY_URL=https://github.com/bucharest-gold/nodejs-istio-tracing-redhat -p SOURCE_REPOSITORY_REF=8.x -p SOURCE_REPOSITORY_DIR=cute-name-service
 ```
 
 ## Use Cases
@@ -48,7 +48,7 @@ Any steps issuing `oc` commands require the user to have run `oc login` first an
     ```
 2. Retrieve the URL for the Istio Ingress Gateway route, with the below command, and open it in a web browser.
     ```
-    echo http://$(oc get route istio-ingressgateway -o jsonpath='{.spec.host}{"\n"}' -n istio-system)/nodejs-istio-tracing
+    echo http://$(oc get route istio-ingressgateway -o jsonpath='{.spec.host}{"\n"}' -n istio-system)/nodejs-istio-tracing-redhat
     ```
 3. The user will be presented with the web page of the Booster
 4. Click the "Invoke" button. You should see a "cute" hello message appear in the result box.
