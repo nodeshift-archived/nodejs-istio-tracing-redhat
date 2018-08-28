@@ -29,7 +29,7 @@ const server = http.createServer(app);
 // Add basic health check endpoints
 probe(app);
 
-const nameServiceHost = process.env.NAME_SERVICE_HOST || 'http://nodejs-istio-tracing-cute-name:8080';
+const nameServiceHost = process.env.NAME_SERVICE_HOST || 'http://nodejs-istio-tracing-redhat-cute-name:8080';
 
 // Serve index.html from the file system
 app.use(express.static(path.join(__dirname, 'public')));
@@ -45,7 +45,7 @@ app.get('/api/greeting', (request, response) => {
     response.send({content: `Hello, ${name}`});
   }).catch(err => {
     response.status(503);
-    response.send(`Failed to communicate with nodejs-istio-tracing-cute-name due to:${err}`);
+    response.send(`Failed to communicate with nodejs-istio-tracing-redhat-cute-name due to:${err}`);
   });
 });
 

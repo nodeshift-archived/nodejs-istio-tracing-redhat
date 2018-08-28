@@ -1,5 +1,5 @@
 {
-  "name": "nodejs-istio-tracing-greeting",
+  "name": "nodejs-istio-tracing-redhat-greeting",
   "version": "2.0.0",
   "author": "Red Hat, Inc.",
   "license": "Apache-2.0",
@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/bucharest-gold/nodejs-istio-tracing.git"
+    "url": "git://github.com/bucharest-gold/nodejs-istio-tracing-redhat.git"
   },
   "files": [
     "package.json",
@@ -39,7 +39,7 @@
     "licenses"
   ],
   "bugs": {
-    "url": "https://github.com/bucharest-gold/nodejs-istio-tracing/issues"
+    "url": "https://github.com/bucharest-gold/nodejs-istio-tracing-redhat/issues"
   },
   "homepage": "https://github.com/bucharest-gold/nodejs-istion-tracing",
   "devDependencies": {
