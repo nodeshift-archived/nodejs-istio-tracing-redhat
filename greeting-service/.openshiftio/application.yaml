@@ -93,7 +93,7 @@ objects:
       provider: nodeshift
       expose: 'true'
       project: nodejs-istio-tracing-redhat-greeting
-      version: 1.0.0
+      version: 1.1.0
 - apiVersion: v1
   kind: DeploymentConfig
   metadata:
@@ -102,7 +102,7 @@ objects:
       app: nodejs-istio-tracing-redhat-greeting
       provider: nodeshift
       project: nodejs-istio-tracing-redhat-greeting
-      version: 1.0.0
+      version: 1.1.0
   spec:
     template:
       spec:
