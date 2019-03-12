@@ -40,8 +40,8 @@
   "devDependencies": {
     "nodeshift": "~1.9.0",
     "rhoaster": "^0.2.0",
-    "supertest": "^3.0.0",
-    "szero": "^0.7.1",
+    "supertest": "^4.0.0",
+    "szero": "^1.0.1",
     "tap-spec": "~5.0.0",
     "tape": "~4.6.2",
     "xo": "~0.20.3"
