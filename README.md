@@ -2,6 +2,8 @@
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/nodeshift-starters/nodejs-istio-tracing-redhat.svg)](https://greenkeeper.io/)
 
+https://access.redhat.com/documentation/en-us/red_hat_build_of_node.js/
+
 ## Purpose
 
 Showcase Distributed Tracing in Istio with Jaeger in Node.js applications
