@@ -39,7 +39,7 @@
   "devDependencies": {
     "nodeshift": "~6.0.2",
     "nyc": "~14.1.1",
-    "xo": "~0.24.0"
+    "xo": "~0.32.1"
   },
   "keywords": [],
   "dependencies": {
